@@ -1,4 +1,15 @@
-# Generalizable Tumor Synthesis
+<h1 align="center">DiffTumor</h1>
+
+<div align="center">
+
+![visitors](https://visitor-badge.laobi.icu/badge?page_id=MrGiovanni/DiffTumor)
+[![GitHub Repo stars](https://img.shields.io/github/stars/MrGiovanni/DiffTumor?style=social)](https://github.com/MrGiovanni/DiffTumor/stargazers)
+<a href="https://twitter.com/bodymaps317">
+        <img src="https://img.shields.io/twitter/follow/BodyMaps?style=social" alt="Follow on Twitter" />
+</a><br/>
+**Subscribe us: https://groups.google.com/u/2/g/bodymaps**  
+
+</div>
 
 We have shown that many types of tumors in different abdominal organs look very similar if they are small (less than 2cm) which implies that we can train the AI to detect tumors in the liver or kidney but only training the diffusion model on tumors in the pancreas ([Q. Chen et al. CVPR 2024](https://www.cs.jhu.edu/~alanlab/Pubs24/chen2024towards.pdf)). These studies have been validated both by studies of radiologists (by challenging them to distinguish between a synthetic tumor and a real tumor) and by comprehensive tests of the AI algorithms trained using stimulated data.
 
@@ -12,7 +23,7 @@ We have shown that many types of tumors in different abdominal organs look very 
 <sup>2 </sup>Shanghai Jiao Tong University,  <br/>
 <sup>3 </sup>Johns Hopkins University  <br/>
 CVPR, 2024 <br/>
-[paper](https://www.cs.jhu.edu/~alanlab/Pubs24/chen2024towards.pdf) | [code](https://github.com/MrGiovanni/DiffTumor) | [huggingface](https://huggingface.co/MrGiovanni/DiffTumor)
+[paper](https://www.cs.jhu.edu/~alanlab/Pubs24/chen2024towards.pdf) | [code](https://github.com/MrGiovanni/DiffTumor) | [slides](https://github.com/MrGiovanni/DiffTumor/blob/main/documents/cvpr_slides.pdf) |  [huggingface](https://huggingface.co/MrGiovanni/DiffTumor)
 
 **We have documented common questions for the paper in [Frequently Asked Questions (FAQ)](documents/FAQ.md).**
 
@@ -78,7 +89,7 @@ vqgan_ckpt=<pretrained-AutoencoderModel> (e.g., /pretrained_models/AutoencoderMo
 fold=0
 datapath=<your-datapath> (e.g., /data/10_Decathlon/Task03_Liver/)
 tumorlabel=<your-labelpath> (e.g., /data/preprocessed_labels/)
-python train.py dataset.name=liver_tumor_train dataset.fold=$fold dataset.data_root_path=$datapath dataset.label_root_path=$tumorlabel dataset.dataset_list=['liver_tumor_data_early_fold'] dataset.uniform_sample=False model.results_folder_postfix="liver_early_tumor_fold'$fold'"  model.vqgan_ckpt=$vqgan_ckpt
+python train.py dataset.name=liver_tumor_train dataset.fold=$fold dataset.data_root_path=$datapath dataset.label_root_path=$tumorlabel dataset.dataset_list=['liver_tumor_data_early_fold'] dataset.uniform_sample=False model.results_folder_postfix="liver_early_tumor_fold"$fold""  model.vqgan_ckpt=$vqgan_ckpt
 ```
 
 We offer the pre-trained checkpoints of Diffusion Model, which were trained for early-stage and mid-/late- stage tumors for liver, pancreas and kidney, respectively. This checkpoint can be directly used for STEP3 if you do not want to re-train the Diffusion Model. Simply download it to `STEP3.SegmentationModel/TumorGeneration/model_weight`
